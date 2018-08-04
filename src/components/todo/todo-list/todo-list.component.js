@@ -10,9 +10,9 @@ class TodoListComponent {
   constructor ($ngRedux, $scope) {
     let disconnect = $ngRedux.connect(
       this.mapState,
-      bindActionCreators(todoActions, $ngRedux.dispatch)
+      dispatch => bindActionCreators(todoActions, dispatch)
     )(this)
-
+    
     $scope.$on('$destroy', disconnect)
   }
 
