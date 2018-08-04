@@ -9,7 +9,7 @@ const AppComponent = {
       </nav>
     </header>
     <ui-view></ui-view>
-    <footer>With ❤️Giuseppe</footer>
+    <footer>By Josef Lekardal</footer>
   `
 }
 
