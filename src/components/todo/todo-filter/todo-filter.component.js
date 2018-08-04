@@ -6,29 +6,25 @@ class FilterComponent {
   /* @ngInject */
   constructor ($ngRedux, $scope) {
     const disconnect = $ngRedux.connect(
-      this.mapState,
-      bindActionCreators(filterActions, $ngRedux.dispatch)
+      state => ({ currentFilter: state.filter }),
+      dispatch => bindActionCreators(filterActions, dispatch)
     )(this)
-    
-    $scope.$on('$destroy', disconnect)
-  }
 
-  mapState ({ filter }) {
-    return { filter }
+    $scope.$on('$destroy', disconnect)
   }
 }
 
 export default {
   transclude: true,
   bindings: {
-    type: '@'
+    filter: '@'
   },
   template: `
     <li
-      ng-class="{ 'active': $ctrl.type === $ctrl.filter }"
-      ng-click="$ctrl.setFilter($ctrl.type)">
+      ng-class="{ 'active': $ctrl.filter === $ctrl.currentFilter }"
+      ng-click="$ctrl.setFilter($ctrl.filter)">
       <ng-transclude></ng-transclude>
-      <todo-count filter="$ctrl.type"></todo-count>
+      <todo-count filter="$ctrl.filter"></todo-count>
     </li>
   `,
   controller: FilterComponent
