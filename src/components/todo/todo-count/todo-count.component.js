@@ -1,4 +1,5 @@
 import './todo-count.scss'
+import { SHOW_COMPLETED, SHOW_TODO } from '../todo-filter/todo-filter.action'
 
 class TodoCountComponent {
   /* @ngInject */
@@ -12,7 +13,7 @@ class TodoCountComponent {
 
   mapState ({ todos, filter }) {
     switch (this.filter) {
-      case 'SHOW_COMPLETED':
+      case SHOW_COMPLETED:
         return {
           count: todos
             .filter(todo => todo.isComplete)
@@ -20,7 +21,7 @@ class TodoCountComponent {
           currentFilter: filter
         }
 
-      case 'SHOW_TODO':
+      case SHOW_TODO:
         return {
           count: todos
             .filter(todo => !todo.isComplete)

@@ -1,6 +1,8 @@
+import { bindActionCreators } from 'redux'
+import * as todoActions from '../todo.action'
 import {
-  deleteTodo, toggleComplete, SHOW_COMPLETED, SHOW_TODO, SHOW_ALL
-} from '../todo.action'
+  SHOW_COMPLETED, SHOW_TODO, SHOW_ALL
+} from '../todo-filter/todo-filter.action'
 import './todo-list.scss'
 
 class TodoListComponent {
@@ -8,7 +10,7 @@ class TodoListComponent {
   constructor ($ngRedux, $scope) {
     let disconnect = $ngRedux.connect(
       this.mapState,
-      this.mapDispatch
+      bindActionCreators(todoActions, $ngRedux.dispatch)
     )(this)
 
     $scope.$on('$destroy', disconnect)
@@ -33,18 +35,6 @@ class TodoListComponent {
       })
     }
   }
-
-  mapDispatch (dispatch) {
-    return {
-      onDeleteTodo (id) {
-        dispatch(deleteTodo(id))
-      },
-
-      onToggleComplete (id) {
-        dispatch(toggleComplete(id)) 
-      }
-    }
-  }
 }
 
 export default {
@@ -58,7 +48,7 @@ export default {
         ng-repeat="todo in $ctrl.todos">
         <span
           ng-class="{ 'complete': todo.isComplete }"
-          ng-click="$ctrl.onToggleComplete(todo.id)">
+          ng-click="$ctrl.toggleComplete(todo.id)">
           {{ todo.text }}</span>
         <form ng-submit="">
           <input type="text" value="{{ todo.text }}">
@@ -66,7 +56,7 @@ export default {
         </form>
         <div class="delete-todo">
           <span ng-click="">✏️</span>
-          <span ng-click="$ctrl.onDeleteTodo(todo.id)">❌</span>
+          <span ng-click="$ctrl.deleteTodo(todo.id)">❌</span>
         </div>
       </li>
     </ul>

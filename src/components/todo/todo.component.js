@@ -1,27 +1,5 @@
 import './todo.scss'
 
-class TodoComponent {
-  /* @ngInject */
-  constructor ($state, $ngRedux) {
-    switch($state.params.filter) {
-      case 'todo':
-        return $ngRedux.dispatch({
-          type: 'SET_FILTER',
-          payload: 'SHOW_TODO'
-        })
-
-      case 'complete':
-        return $ngRedux.dispatch({
-          type: 'SET_FILTER',
-          payload: 'SHOW_COMPLETED'
-        })
-
-      default:
-        return false
-    }
-  }
-}
-
 export default {
   template: `
     <ul class="filter">
@@ -31,6 +9,5 @@ export default {
     </ul>
     <todo-form></todo-form>
     <todo-list></todo-list>
-  `,
-  controller: TodoComponent
+  `
 }

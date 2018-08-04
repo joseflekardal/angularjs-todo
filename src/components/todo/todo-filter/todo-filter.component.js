@@ -1,29 +1,20 @@
 import './todo-filter.scss'
+import * as filterActions from './todo-filter.action'
+import { bindActionCreators } from 'redux'
 
 class FilterComponent {
   /* @ngInject */
   constructor ($ngRedux, $scope) {
     const disconnect = $ngRedux.connect(
       this.mapState,
-      this.mapDispatch
-     )(this)
+      bindActionCreators(filterActions, $ngRedux.dispatch)
+    )(this)
     
     $scope.$on('$destroy', disconnect)
   }
 
   mapState ({ filter }) {
     return { filter }
-  }
-
-  mapDispatch (dispatch) {
-    return {
-      onSetFilter (filter) {
-        dispatch({
-          type: 'SET_FILTER',
-          payload: filter
-        })
-      }
-    }
   }
 }
 
@@ -35,7 +26,7 @@ export default {
   template: `
     <li
       ng-class="{ 'active': $ctrl.type === $ctrl.filter }"
-      ng-click="$ctrl.onSetFilter($ctrl.type)">
+      ng-click="$ctrl.setFilter($ctrl.type)">
       <ng-transclude></ng-transclude>
       <todo-count filter="$ctrl.type"></todo-count>
     </li>

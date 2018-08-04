@@ -1,7 +1,10 @@
 import { combineReducers } from 'redux'
 import {
-  ADD_TODO, DELETE_TODO, EDIT_TODO, TOGGLE_COMPLETE, SHOW_ALL
+  ADD_TODO, DELETE_TODO, EDIT_TODO, TOGGLE_COMPLETE
 } from '../components/todo/todo.action'
+import {
+  SHOW_ALL, SET_FILTER
+} from '../components/todo/todo-filter/todo-filter.action'
 
 const todos = (state = [], action) => {
   switch (action.type) {
@@ -34,7 +37,7 @@ const todos = (state = [], action) => {
 
 const filter = (state = SHOW_ALL, action) => {
   switch (action.type) {
-    case 'SET_FILTER':
+    case SET_FILTER:
       return action.payload
 
     default:
