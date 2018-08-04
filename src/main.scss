@@ -1,0 +1,38 @@
+* {
+  font-family: sans-serif;
+  font-weight: 200;
+  box-sizing: border-box;
+}
+
+body {
+  background: #555;
+  color: #fff;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+input, button {
+  font-size: 1.6em;
+  color: #777;
+  background: #fff;
+  padding: 0.2em 0.5em;
+  border: 0;
+  border-radius: 2px;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

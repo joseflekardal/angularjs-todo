@@ -1,0 +1,13 @@
+todo-form {  
+  form {
+    display: flex;
+    
+    input {
+      flex: 1 0 200px;
+    }
+    
+    button {
+      display: none;
+    }
+  }
+}

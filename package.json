@@ -1,0 +1,33 @@
+{
+  "name": "angularjs-todo",
+  "version": "1.0.0",
+  "description": "A modern AngularJS app",
+  "scripts": {
+    "build": "npx webpack",
+    "dev": "npx webpack-dev-server --open"
+  },
+  "author": "Josef Lekardal",
+  "license": "ISC",
+  "dependencies": {
+    "@uirouter/angularjs": "^1.0.19",
+    "angular": "^1.7.2",
+    "angular-animate": "^1.7.2",
+    "angular-resource": "^1.7.2",
+    "ng-redux": "^4.1.0-alpha",
+    "redux": "^4.0.0",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "redux-ui-router": "^0.7.3"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^1.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.9.2",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.16.4",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
+  }
+}

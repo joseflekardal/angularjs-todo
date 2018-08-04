@@ -1,0 +1,18 @@
+app {
+  header {
+    background: #fdc07f;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1em;
+
+    h1 {
+      font-size: 1.5em;
+      letter-spacing: 2px;
+    }
+  }
+
+  footer {
+    padding: 1em;
+  }
+}

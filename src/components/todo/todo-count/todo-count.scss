@@ -1,0 +1,15 @@
+todo-count { 
+  .todo-count {
+    background: #ef4545;
+    font-size: .5em;
+    position: absolute;
+    top: -10px;
+    right: -15px;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
