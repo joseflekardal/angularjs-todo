@@ -12,6 +12,13 @@ app {
     }
   }
 
+  ui-view {
+    display: block;
+    max-width: 400px;
+    min-height: 80vh;
+    margin: 2em auto;
+  }
+
   footer {
     padding: 1em;
   }

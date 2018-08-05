@@ -26,8 +26,12 @@ export default angular
 
     $stateProvider
       .state('home', {
-        url: '/:filter',
+        url: '/',
         component: 'todo'
+      })
+      .state('about', {
+        url: '/about',
+        component: 'about'
       })
 
     $urlRouterProvider.otherwise('/')

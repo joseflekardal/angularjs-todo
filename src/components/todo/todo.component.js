@@ -1,5 +1,3 @@
-import './todo.scss'
-
 export default {
   template: `
     <ul class="filter">
