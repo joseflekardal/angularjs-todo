@@ -10,16 +10,18 @@ class TodoListComponent {
   constructor ($ngRedux, $scope) {
     let disconnect = $ngRedux.connect(
       this.mapState,
-      dispatch => bindActionCreators(todoActions, dispatch)
+      this.mapDispatch
     )(this)
     
     $scope.$on('$destroy', disconnect)
+
+    this.updatedTodo = ''
   }
 
-  mapState (state) {
+  mapState ({ todos, editingTodo, filter }) {
     return {
-      todos: state.todos.filter(todo => {
-        switch (state.filter) {
+      todos: todos.filter(todo => {
+        switch (filter) {
           case SHOW_ALL:
             return true
 
@@ -32,7 +34,17 @@ class TodoListComponent {
           default:
             return true
         }
-      })
+      }),
+      editingTodo
+    }
+  }
+  mapDispatch (dispatch) {
+    return {
+      ...bindActionCreators(todoActions, dispatch),
+      saveTodo ({ id, text }) {
+        dispatch(todoActions.saveTodo({ text, id }))
+        dispatch(todoActions.exitTodoEdit())
+      }
     }
   }
 }
@@ -49,13 +61,16 @@ export default {
         <span
           ng-class="{ 'complete': todo.isComplete }"
           ng-click="$ctrl.toggleComplete(todo.id)">
-          {{ todo.text }}</span>
-        <form ng-submit="">
-          <input type="text" value="{{ todo.text }}">
+          {{ todo.text }}
+        </span>
+        <form
+          ng-submit="$ctrl.saveTodo(todo)"
+          ng-if="$ctrl.editingTodo === todo.id">
+          <input type="text" ng-model="todo.text">
           <button type="submit">Save</button>
         </form>
-        <div class="delete-todo">
-          <span ng-click="">✏️</span>
+        <div class="todo-controllers">
+          <span ng-click="$ctrl.editTodo(todo.id)">✏️</span>
           <span ng-click="$ctrl.deleteTodo(todo.id)">❌</span>
         </div>
       </li>

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import {
-  ADD_TODO, DELETE_TODO, EDIT_TODO, TOGGLE_COMPLETE
+  ADD_TODO, DELETE_TODO, EDIT_TODO, TOGGLE_COMPLETE, SET_EDITING_TODO, SAVE_TODO
 } from '../components/todo/todo.action'
 import {
   SHOW_ALL, SET_FILTER
@@ -30,6 +30,14 @@ const todos = (state = [], action) => {
         return todo
       })
 
+    case SAVE_TODO:
+      return state.map(todo => {
+        if (todo.id === action.payload.id) {
+          todo.text = action.payload.text
+        }
+        return todo
+      })
+
     default:
       return state
   }
@@ -45,4 +53,16 @@ const filter = (state = SHOW_ALL, action) => {
   }
 }
 
-export default combineReducers({ todos, filter })
+const editingTodo = (state = null, action) => {
+  switch (action.type) {
+    case SET_EDITING_TODO:
+      return action.payload === state
+        ? null
+        : action.payload
+
+    default:
+      return state
+  }
+}
+
+export default combineReducers({ todos, filter, editingTodo })

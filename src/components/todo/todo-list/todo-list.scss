@@ -9,13 +9,13 @@ todo-list {
         cursor: pointer;
       }
 
-      .delete-todo {
+      .todo-controllers {
         opacity: 0;
         transition: 400ms opacity;
       }
 
       &:hover {
-        .delete-todo {
+        .todo-controllers {
           opacity: 1;
         }
       }
