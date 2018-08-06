@@ -1,0 +1,66 @@
+todo-item {
+  display: block;
+
+  &.slide {
+    transition: 300ms all;
+
+    &.ng-enter {
+      opacity: 0;
+      transform: translateX(50px);
+
+      &-active {
+        opacity: 1;
+        transform: translateX(0px);
+      }
+
+      &-stagger {
+        transition-delay: 0.1s;
+        transition-duration: 0s;
+      }
+    }
+
+    &.ng-leave {
+      opacity: 1;
+      transform: translateX(0px);
+
+      &-active {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+
+      &-stagger {
+        transition-delay: 0.1s;
+        transition-duration: 0s;
+      }
+    }
+  }
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      cursor: pointer;
+    }
+
+    .todo-controllers {
+      opacity: 0;
+      transition: 400ms opacity;
+    }
+
+    &:hover {
+      .todo-controllers {
+        opacity: 1;
+      }
+    }
+
+    .complete {
+      text-decoration: line-through;
+    }
+  }
+
+  input, button {
+    font-size: 1em;
+  }
+}

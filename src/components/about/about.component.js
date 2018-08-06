@@ -1,3 +1,5 @@
+import './about.scss'
+
 class AboutComponent {
   /* @ngInject */
   constructor (AboutService) {
@@ -17,12 +19,19 @@ class AboutComponent {
 
 export default {
   template: `
-    <h1>About</h1>
     <p ng-if="!$ctrl.repo">Loading...</p>
-    <p ng-if="$ctrl.repo">
-      My name is @{{ $ctrl.repo.owner.login }} and this is one of my projects -
-      A <i>{{ $ctrl.repo.description }}</i>.
-    </p>
+    <div ng-if="$ctrl.repo">
+      <img ng-src="{{ $ctrl.repo.owner.avatar_url }}" class="avatar">
+      <h1>About</h1>
+      <p>
+        My name is
+        <a href="{{ $ctrl.repo.owner.html_url }}">
+          @{{ $ctrl.repo.owner.login }}
+        </a>
+        and this is one of my projects - A
+        <i>{{ $ctrl.repo.description }}</i> application.
+      </p>
+    </div>
   `,
   controller: AboutComponent
 }
