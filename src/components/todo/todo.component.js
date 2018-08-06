@@ -2,8 +2,8 @@ import {
   SHOW_COMPLETED, SHOW_TODO, SHOW_ALL
 } from './todo-filter/todo-filter.action'
 
+/* @ngInject */
 class TodoComponent {
-  /* @ngInject */
   constructor ($ngRedux, $scope) {
     let disconnect = $ngRedux.connect(
       this.mapState

@@ -2,8 +2,8 @@ import { bindActionCreators } from 'redux'
 import * as todoActions from '../todo.action'
 import './todo-item.scss'
 
+/* @ngInject */
 class TodoItemComponent {
-  /* @ngInject */
   constructor ($ngRedux, $scope) {
     let disconnect = $ngRedux.connect(
       state => ({ editingTodo: state.editingTodo }),

@@ -2,8 +2,8 @@
 /node_modules
 .DS_Store
 *.log
+.env
 .idea
 .vscode
 .eslintcache
 package-lock.json
-

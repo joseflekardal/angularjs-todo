@@ -1,8 +1,8 @@
 import './todo-count.scss'
 import { SHOW_COMPLETED, SHOW_TODO } from '../todo-filter/todo-filter.action'
 
+/* @ngInject */
 class TodoCountComponent {
-  /* @ngInject */
   constructor ($ngRedux, $scope) {
     let disconnect = $ngRedux.connect(
       this.mapState.bind(this)

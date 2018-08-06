@@ -1,8 +1,8 @@
 import { addTodo } from '../todo.action'
 import './todo-form.scss'
 
+/* @ngInject */
 class TodoFormComponent {
-  /* @ngInject */
   constructor ($ngRedux, $scope) {
     let disconnect = $ngRedux.connect(
       null,

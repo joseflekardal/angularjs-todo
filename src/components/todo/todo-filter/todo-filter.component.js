@@ -2,8 +2,8 @@ import './todo-filter.scss'
 import * as filterActions from './todo-filter.action'
 import { bindActionCreators } from 'redux'
 
+/* @ngInject */
 class FilterComponent {
-  /* @ngInject */
   constructor ($ngRedux, $scope) {
     const disconnect = $ngRedux.connect(
       state => ({ currentFilter: state.filter }),

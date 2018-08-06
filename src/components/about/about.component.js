@@ -1,7 +1,7 @@
 import './about.scss'
 
+/* @ngInject */
 class AboutComponent {
-  /* @ngInject */
   constructor (AboutService) {
     this.AboutService = AboutService
   }
